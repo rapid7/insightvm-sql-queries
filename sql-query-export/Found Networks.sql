@@ -1,3 +1,6 @@
+-- Count of assets found per /24 subnet
+-- Copy the SQL query below
+
 WITH a AS (
 SELECT 
 asset_id,
