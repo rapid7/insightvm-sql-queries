@@ -1,3 +1,7 @@
+
+-- Count of assets per /24 subnet that have not been defined within a site based off of tag
+-- Copy the SQL query below
+
 WITH a AS (
 SELECT 
 asset_id
