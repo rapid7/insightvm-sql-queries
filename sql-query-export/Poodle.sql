@@ -1,4 +1,4 @@
--- Console query to find assets hat may be vullenerable to Poodle/ have SSLv3 supported
+-- Console query to find assets that may be vulnerable to Poodle/ have SSLv3 supported
 -- Copy the SQL query below
 
 WITH
