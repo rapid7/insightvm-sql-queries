@@ -1,6 +1,8 @@
 # A collection of SQL queries for InsightVM
 
-This repository is intended to serve as a place to store and share SQL queries for use in InsightVM. These queries are sorted into two separate folders based on their use with the reporting data model, versus the data warehouse.
+This repository is intended to serve as a place to store and share example SQL queries for use in InsightVM. These queries are sorted into two separate folders based on their use with the reporting data model, versus the data warehouse.
+
+Please be sure to test these queries and verify their results before usage. Queries may need updates depending on your environment and desired output.
 
 ## Navigating This Repo
 
