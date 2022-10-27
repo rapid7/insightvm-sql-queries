@@ -16,4 +16,4 @@ ON fa.asset_id = dsa.asset_id
 JOIN dim_site as dsite
 ON dsa.site_id = dsite.site_id
 GROUP BY dsite."name", da.ip_address, da.host_name,dos.description, os.certainty_max
-ORDER BY "Site", host(da.ip_address)
+ORDER BY "Site", da.ip_address
