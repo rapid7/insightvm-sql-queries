@@ -1,4 +1,5 @@
-Gives you the following: IP | HOSTNAME | OS | TAG NAME | VULN | PROOF | SUMMARY
+-- Gives you the following: IP | HOSTNAME | OS | TAG NAME | VULN | PROOF | SUMMARY
+-- Copy the SQL query below
 
 SELECT da.ip_address, da.host_name, dos.description, dt.tag_name, dv.title, favf.proof, ds.summary 
 
