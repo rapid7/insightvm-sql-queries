@@ -12,5 +12,5 @@ LEFT OUTER JOIN dim_tag dt ON dt.tag_id = dta.tag_id 
 JOIN dim_vulnerability_solution vs ON vs.vulnerability_id = favf.vulnerability_id 
 JOIN dim_solution ds ON ds.solution_id = vs.solution_id 
 
-WHERE dv.title like '%TLS/SSL Server Supports SSL version 3%' 
+WHERE dv.title like '%TLS/SSL Server Supports SSLv3%' 
 ORDER BY dv.title ASC 
