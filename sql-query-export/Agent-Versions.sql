@@ -12,7 +12,7 @@ ds.family AS "Software_Family",
 ds.version AS "Software_Version",
 ds.software_class AS "Software_Class"
 FROM dim_asset_software das
-JOIN dim_software ds USING(software_id)
-JOIN dim_asset da ON da.asset_id = das.asset_id
-WHERE ds.vendor like'Rapid7%'
+JOIN dim_software ds ON das.software_id=ds.software_id
+JOIN dim_asset da ON da.asset_id=das.asset_id
+WHERE ds.name = 'Rapid7 Insight Agent'
 ORDER BY ds.name ASC
