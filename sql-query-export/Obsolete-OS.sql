@@ -1,3 +1,6 @@
+-- Query to show all Obsolete OS vulnerabilities with aggregates of assets affected
+-- Copy the SQL query below
+
 SELECT
 dv.title AS "Vulnerability Title",
 fasvi.proof AS "Proof of Vulnerability",
