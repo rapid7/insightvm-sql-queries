@@ -7,4 +7,4 @@ JOIN dim_vulnerability dv ON (fasvi.vulnerability_id = dv.vulnerability_id)
 JOIN dim_scan ds ON (fasvi.scan_id = ds.scan_id)
 --WHERE fasvi.scan_id = 'scan id number'
 GROUP BY fasvi.scan_id, fasvi.asset_id, da.host_name, da.ip_address, dv.severity, ds.finished
-ORDER BY ds.finished DESC, dv.severity DESC;
+ORDER BY ds.finished DESC, dv.severity DESC
