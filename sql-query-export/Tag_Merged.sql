@@ -7,7 +7,7 @@
 -- Report Date
 -- OS
 -- Tag_Name
-
+-- Copy the SQL query below
 
 SELECT 
   da.ip_address, 
