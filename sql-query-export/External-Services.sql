@@ -13,5 +13,5 @@ JOIN dim_site_scan AS dss USING (scan_id)
 JOIN dim_site AS dsite USING (site_id)
 JOIN dim_site_scan_config AS dssc USING (site_id)
 JOIN dim_scan_engine AS dse USING (scan_engine_id) 
-WHERE lastScan(da.asset_id) = fas.scan_id AND fass.port != 22 AND fass.port != 123 AND fass.port != 80 AND fass.port != 53
+WHERE lastScan(da.asset_id) = fas.scan_id
 ORDER BY da.asset_id ASC, fass.port ASC
