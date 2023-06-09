@@ -8,7 +8,7 @@
 -- OS Ver
 -- Date when asset was discovered
 -- Asset State
-   
+-- Copy the SQL query below
 
 WITH 
   last_two_scans AS (
