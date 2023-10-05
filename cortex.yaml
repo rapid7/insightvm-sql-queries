@@ -1,0 +1,16 @@
+---
+info:
+  title: Insightvm Sql Queries
+  description: InsightVM helpful SQL queries
+  x-cortex-git:
+    github:
+      alias: r7org
+      repository: rapid7/insightvm-sql-queries
+  x-cortex-tag: insightvm-sql-queries
+  x-cortex-type: service
+  x-cortex-groups: []
+  x-cortex-domain-parents:
+  - tag: vm-decumentation
+openapi: 3.0.1
+servers:
+- url: "/"
