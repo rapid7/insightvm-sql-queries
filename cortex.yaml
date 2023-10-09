@@ -10,7 +10,7 @@ info:
   x-cortex-type: service
   x-cortex-groups: []
   x-cortex-domain-parents:
-  - tag: vm-decumentation
+  - tag: vm-documentation
 openapi: 3.0.1
 servers:
 - url: "/"
