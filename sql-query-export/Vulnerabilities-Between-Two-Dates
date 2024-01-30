@@ -1,0 +1,27 @@
+-- Shows Vulnerability results between 2 dates, please change sample dates '2024-01-01' and '2024-01-02' to whichever dates you wish to compare.
+-- Copy the SQL query below
+SELECT
+  da.host_name AS "Host Name",
+  da.ip_address AS "IP Address",
+  dos.description AS "Operating System",
+  dv.title AS "Vulnerability Title",
+  round(dv.cvss_score::numeric, 2) AS "CVSS Score",
+  ds.finished AS "Scan Finished"
+FROM
+  fact_asset_scan_vulnerability_instance fasvi
+  JOIN dim_asset da ON (fasvi.asset_id = da.asset_id)
+  JOIN dim_vulnerability dv ON (fasvi.vulnerability_id = dv.vulnerability_id)
+   JOIN dim_scan ds ON (fasvi.scan_id = ds.scan_id)
+  JOIN dim_operating_system dos ON (da.operating_system_id = dos.operating_system_id)
+WHERE (ds.finished,ds.finished) OVERLAPS ('2024-01-01'::date,'2024-01-02'::date)
+GROUP BY
+  fasvi.scan_id,
+  fasvi.asset_id,
+  da.host_name,
+  da.ip_address,
+  dos.description,
+  dv.title,
+  dv.cvss_score,
+  ds.finished
+ORDER BY
+  ds.finished DESC
