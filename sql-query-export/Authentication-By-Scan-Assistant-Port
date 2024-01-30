@@ -1,0 +1,13 @@
+-- Determines Credential Status by Scan Assistant port 21047
+-- Copy the SQL query below
+SELECT
+ip_address AS "IP Address",
+date AS "Date",
+name AS "HTTP",
+credential_status_description AS "Credential Status"
+FROM
+fact_asset_scan_service
+JOIN dim_credential_status USING (credential_status_id)
+JOIN dim_service USING (service_id)
+JOIN dim_asset USING (asset_id)
+WHERE port = '21047'
