@@ -9,6 +9,6 @@ case when (select extract (day from rd.day - vfd.date)) <= 30 then 'yes'
 else 'no'
 end sla_met
 from fact_asset_vulnerability_finding_date vfd
-join fact_asset_vulnerability_remediation_date rd using (vulnerability_id)
+join fact_asset_vulnerability_remediation_date rd ON (rd.vulnerability_id = vfd.vulnerability_id AND rd.asset_id = vfd.asset_id)
 where vfd.critical_vulnerabilities = '1' or
 vfd.severe_vulnerabilities = '1'
