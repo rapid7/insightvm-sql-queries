@@ -1,0 +1,52 @@
+WITH location_tags AS (
+    SELECT
+        dta.asset_id,
+        string_agg(dt.tag_name, ', ') as location_tags
+    FROM
+        dim_tag dt
+        JOIN dim_tag_asset dta ON dt.tag_id = dta.tag_id
+    WHERE
+        dt.tag_type = 'LOCATION'
+    GROUP BY
+        dta.asset_id
+),
+owner_tags AS (
+    SELECT
+        dta.asset_id,
+        string_agg(dt.tag_name, ', ') as owner_tags
+    FROM
+        dim_tag dt
+        JOIN dim_tag_asset dta ON dt.tag_id = dta.tag_id
+    WHERE
+        dt.tag_type = 'OWNER'
+    GROUP BY
+        dta.asset_id
+),
+criticality_tags AS (
+    SELECT
+        dta.asset_id,
+        string_agg(dt.tag_name, ', ') as criticality_tags,
+        risk_modifier::double precision -- Cast risk_modifier to double precision
+    FROM
+        dim_tag dt
+        JOIN dim_tag_asset dta ON dt.tag_id = dta.tag_id
+    WHERE
+        dt.tag_type = 'CRITICALITY'
+    GROUP BY
+        dta.asset_id,
+        dt.risk_modifier
+)
+SELECT
+    da.ip_address,
+    da.host_name,
+    lt.location_tags AS Application, -- Renaming location_tags to Application
+    ot.owner_tags AS Regulated, -- Renaming owner_tags to Regulated
+    crit.criticality_tags,
+    fa.riskscore AS "Risk Score",
+    CAST(fa.riskscore::double precision * crit.risk_modifier AS NUMERIC(10,0)) AS "Adjusted Risk Score" -- rounding the Adjusted Risk Score to 0 decimal places
+FROM
+    dim_asset da
+    LEFT JOIN location_tags lt USING (asset_id)
+    LEFT JOIN owner_tags ot USING (asset_id)
+    LEFT JOIN criticality_tags crit USING (asset_id)
+    JOIN fact_asset fa ON da.asset_id = fa.asset_id
