@@ -1,0 +1,19 @@
+-- asset inventorty with hostnames and its associated vuln with proof
+--         asset_name	vulnerability_id	vulnerability_title	severity_level	cvss_score	cve_id	proof_of_vulnerability	date_published
+-- Copy the SQL query below
+
+SELECT 
+    da.host_name                      AS asset_name,
+    dv.vulnerability_id              AS vulnerability_id,
+    dv.title                         AS vulnerability_title,
+    dv.severity                      AS severity_level,
+    dv.cvss_score                    AS cvss_score,
+    nexpose_id                       AS CVE_ID,
+    proof                       AS proof_of_vulnerability,
+    dv.date_published                AS date_published
+FROM fact_asset_vulnerability_instance favi
+JOIN dim_asset da
+    ON favi.asset_id = da.asset_id
+JOIN dim_vulnerability dv
+    ON favi.vulnerability_id = dv.vulnerability_id
+ORDER BY da.host_name, dv.severity DESC;
