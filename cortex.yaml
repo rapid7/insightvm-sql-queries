@@ -8,7 +8,8 @@ info:
       repository: rapid7/insightvm-sql-queries
   x-cortex-tag: insightvm-sql-queries
   x-cortex-type: service
-  x-cortex-groups: []
+  x-cortex-groups:
+  - exposure:internal-ship
   x-cortex-domain-parents:
   - tag: vm-documentation
 openapi: 3.0.1
